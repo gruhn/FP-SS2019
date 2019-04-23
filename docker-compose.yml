@@ -4,5 +4,14 @@ services:
   haskell:
     image: haskell:8.6.3
     volumes:
-      - ./src:/src
-    working_dir: /src
+      - ./exercises:/exercises
+    working_dir: /exercises
+  submit:
+    build:
+      context: .
+      dockerfile: submit.dockerfile
+    env_file:
+      - mat-numbers.env
+    volumes:
+      - ./:/repo
+    working_dir: /repo
