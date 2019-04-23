@@ -1,8 +1,9 @@
 version: "3"
 
 services:
-  haskell:
+  ghci:
     image: haskell:8.6.3
+    command: ghci
     volumes:
       - ./exercises:/exercises
     working_dir: /exercises
