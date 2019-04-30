@@ -16,3 +16,4 @@ services:
     volumes:
       - ./:/repo
     working_dir: /repo
+    command: ./generate-submissions.sh
