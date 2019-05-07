@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.13)  5 MAY 2019 12:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.13)  7 MAY 2019 19:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -245,26 +245,26 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--168
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 10000) in paragraph at lines 191--192
 
  []
 
 [3] (./Excercise 2_Latex.aux) ) 
 Here is how much of TeX's memory you used:
- 4390 strings out of 492995
- 61029 string characters out of 6132704
+ 4386 strings out of 492995
+ 61022 string characters out of 6132704
  312655 words of memory out of 5000000
- 7928 multiletter control sequences out of 15000+600000
+ 7924 multiletter control sequences out of 15000+600000
  6207 words of font info for 23 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  27i,12n,43p,231b,1655s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -276,7 +276,7 @@ m/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on "Excercise 2_Latex.pdf" (3 pages, 85832 bytes).
+Output written on "Excercise 2_Latex.pdf" (3 pages, 85652 bytes).
 PDF statistics:
  43 PDF objects out of 1000 (max. 8388607)
  30 compressed objects within 1 object stream
