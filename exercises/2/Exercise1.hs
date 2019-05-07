@@ -1,44 +1,49 @@
+-- Excercise 1
 
--- 1a)
-data PriorityQueue a = EmptyQueue |  Push a Int (PriorityQueue a)
-  deriving Show
+-- a)
+
+data PriorityQueue a = Push a Int (PriorityQueue a) | EmptyQueue deriving Show
 
 p :: PriorityQueue Int
-p = Push 11 1
-  $ Push 5 3
-  $ Push 5 0
-  $ Push 9 (-1)
-  $ Push 7 3
-  $ Push 8 (-3)
-  $ EmptyQueue
+p = Push 11 1 (Push 5 3 (Push 5 0 (Push 9 (-1) (Push 7 3 (Push 8 (-3) EmptyQueue)))))
 
--- 1b)
+-- b)
+
 isWaiting :: Eq a => a -> PriorityQueue a -> Bool
-isWaiting _ EmptyQueue = False
-isWaiting y (Push x _ xs)
-  | x == y = True
-  | otherwise = isWaiting y xs
+isWaiting _ EmptyQueue               = False
+isWaiting x (Push v _ n) | x == v    = True
+                         | otherwise = isWaiting x n
 
--- 1c)
-fromList :: [(a, Int)] -> PriorityQueue a
-fromList [] = EmptyQueue
-fromList ((x, n):xs) = Push x n (fromList xs)
+-- c)
 
--- 1d)
-pop :: PriorityQueue a -> (a, PriorityQueue a)
-pop EmptyQueue = undefined
-pop (Push x n xs) = (y,ys)
-  where
-    (Push y _ ys) = maxFirst xs (Push x n EmptyQueue)
-    maxFirst :: PriorityQueue a -> PriorityQueue a -> PriorityQueue a
-    maxFirst EmptyQueue result = result
-    maxFirst (Push x n xs) (Push y m ys)
-      | n > m = maxFirst xs (Push x n (Push y m ys))
-      | otherwise = maxFirst xs (Push y m (Push x n ys))
+fromList :: [(a,Int)] -> PriorityQueue a
+fromList []           = EmptyQueue
+fromList ((x,p):xs)   = Push x p (fromList xs)
 
--- 1e)
+-- d)
+
+-- auxiliary functions
+delete :: PriorityQueue a -> Int -> PriorityQueue a
+delete EmptyQueue _   = EmptyQueue
+delete (Push v p n) x = if x==p then n else (Push v p (delete n x))
+
+findElement :: PriorityQueue a -> Int -> a
+findElement (Push v p n) x = if x==p then v else findElement n x
+
+highestPriority :: PriorityQueue a -> Int
+highestPriority EmptyQueue   = minBound
+highestPriority (Push v p n) = max p (highestPriority n)
+
+--main function
+pop :: PriorityQueue a -> (a,PriorityQueue a)
+pop x = (findElement x h, delete x h)
+    where h = highestPriority x
+
+-- Since the PriorityQueue given to the function 'pop' is nonempty both the main function 'pop' and the auxiliary function 'findElement' ignore that case.
+
+-- e)
+
 toList :: PriorityQueue a -> [a]
 toList EmptyQueue = []
-toList xs = y : toList ys
-  where
-    (y, ys) = pop xs
+toList q = x : toList y
+   where (x,y) = pop q

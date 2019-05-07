@@ -1,16 +1,17 @@
+--Excercise 4 
 
--- 4a)
-data Polynomial a = Coeff a Int (Polynomial a) | Null deriving Show
+-- a)
+
+data Polynomial a = Coeff a Int (Polynomial a)| Null deriving Show
+
+q :: Polynomial Int
+q = Coeff 4 3 (Coeff 2 1 (Coeff 5 0 Null))
 
 foldPoly :: (a -> Int -> b -> b) -> b -> Polynomial a -> b
-foldPoly _ e Null = e
-foldPoly f e (Coeff c n p) = f c n (foldPoly f e p)
+foldPoly f d Null = d
+foldPoly f d (Coeff a b c) = f a b (foldPoly f d c)
 
--- 4b)
+-- b)
+
 degree :: Polynomial Int -> Int
-degree p = foldPoly maxDeg minBound p
-  where
-    maxDeg c n m
-      | c == 0 = m
-      | m >= n = m
-      | otherwise = n
+degree x = foldPoly (\ c n m -> if n > m then n else m) minBound x

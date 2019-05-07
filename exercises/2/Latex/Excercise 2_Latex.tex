@@ -1,0 +1,190 @@
+\documentclass[a4paper,12pt,oneside]{book}
+
+\usepackage[ngerman]{babel}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
+\DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
+\usepackage{listings}
+\newcommand{\ignore}[1]{}
+
+\fboxrule0.3mm
+\definecolor{rahmen}{gray}{.3}      % Dunkelgrauer Rahmen
+\definecolor{grund}{gray}{.85}         % Hellgrauer Hintergrund
+
+\lstset{ 
+    language=Haskell, % choose the language of the code
+    basicstyle=\fontfamily{pcr}\selectfont\footnotesize\color{black},
+    keywordstyle=\color{black}\mdseries, % style for keywords
+    numbers=none, % where to put the line-numbers
+    numberstyle=\tiny, % the size of the fonts that are used for the line-numbers     
+    backgroundcolor=\color{grund},
+    showspaces=false, % show spaces adding particular underscores
+    showstringspaces=false, % underline spaces within strings
+    showtabs=false, % show tabs within strings adding particular underscores
+    frame=single, % adds a frame around the code
+    tabsize=2, % sets default tabsize to 2 spaces
+    rulesepcolor=\color{rahmen},
+    rulecolor=\color{rahmen},
+    captionpos=b, % sets the caption-position to bottom
+    breaklines=true, % sets automatic line breaking
+    breakatwhitespace=false, 
+}
+ 
+\pagestyle{fancy}
+\usepackage[left=30mm,right=30mm, top=27mm, bottom=22mm]{geometry}
+
+\fancyhf{}
+\rfoot{ \textbf{Page \thepage}}
+\lhead{\begin{footnotesize}Functional Programming SS 2019\end{footnotesize}}
+\rhead{\begin{footnotesize}379455, 402403, 389343, 402472\end{footnotesize}}
+\lfoot{\begin{footnotesize} 
+\end{footnotesize}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1 pt} 
+
+\begin{document}
+\setlength{\parindent}{0em} 
+
+
+\begin{center} 
+\textbf{\huge{Functional Programming} \\ \large{ Excercise Sheet 2}} % Nummerierung anpassen
+
+~\\
+Emilie Hastrup-Kiil (379455), 
+Julian Schacht (402403), \\
+Niklas Gruhn (389343), 
+Maximilian Loose (402372)
+\end{center}
+\textbf{Excercise 1} \\ % Nummerierung anpassen
+a)
+\begin{lstlisting}
+data PriorityQueue a = Push a Int (PriorityQueue a) | EmptyQueue deriving Show
+
+p :: PriorityQueue Int
+p = Push 11 1 (Push 5 3 (Push 5 0 (Push 9 (-1) (Push 7 3 (Push 8 (-3) EmptyQueue)))))
+\end{lstlisting}
+~\\
+b)
+\begin{lstlisting}
+isWaiting :: Eq a => a -> PriorityQueue a -> Bool
+isWaiting _ EmptyQueue               = False
+isWaiting x (Push v _ n) | x == v    = True
+                         | otherwise = isWaiting x n
+\end{lstlisting}
+~\\           
+c)
+\begin{lstlisting}
+fromList :: [(a,Int)] -> PriorityQueue a
+fromList []           = EmptyQueue
+fromList ((x,p):xs)   = Push x p (fromList xs)
+\end{lstlisting}
+~\\
+d)
+\begin{lstlisting}
+-- auxiliary functions
+delete :: PriorityQueue a -> Int -> PriorityQueue a
+delete EmptyQueue _   = EmptyQueue
+delete (Push v p n) x = if x==p then n else (Push v p (delete n x)) 
+findElement :: PriorityQueue a -> Int -> a
+findElement (Push v p n) x = if x==p then v else findElement n x
+
+highestPriority :: PriorityQueue a -> Int
+highestPriority EmptyQueue   = minBound
+highestPriority (Push v p n) = max p (highestPriority n)
+
+--main function
+pop :: PriorityQueue a -> (a,PriorityQueue a)
+pop x = (findElement x h, delete x h)
+    where h = highestPriority x
+\end{lstlisting}
+~\\
+e)
+\begin{lstlisting}
+toList :: PriorityQueue a -> [a]
+toList EmptyQueue = []
+toList q = x : toList y
+   where (x,y) = pop q
+\end{lstlisting}
+\textbf{Excercise 2} \\% Nummerierung anpassen
+a)
+\begin{lstlisting}
+data List a = Nil | Cons a (List a) deriving Show
+
+instance Eq a => Eq (List a) where
+    Nil == Nil                       = True
+    (Cons v1 n1) == (Cons v2 n2)     = (v1 == v2) && (n1 == n2)
+    _ == _                           = False
+\end{lstlisting}
+~\\     
+b)
+\begin{lstlisting}
+class Eq a => Mono a where
+    binOp :: a -> a -> a 
+    one :: a
+    pow :: Word -> a -> a
+    pow 0 x = one
+    pow n x = binOp x (pow (n-1) x)
+\end{lstlisting}
+~\\     
+c)
+\begin{lstlisting}
+instance Mono Integer where
+    binOp a b = a*b
+    one = 1
+    
+instance Eq a => Mono (List a) where
+    binOp x Nil = x
+    binOp Nil x = x
+    binOp (Cons a1 b1) (Cons a2 b2) = Cons a1 (binOp b1 (Cons a2 b2))
+    one = Nil
+\end{lstlisting}
+~\\     
+d)
+\begin{lstlisting}
+multiply :: Mono a => [(Word,a)] -> a
+multiply [] = one
+multiply ((x,y):xs) = binOp (pow x y) (multiply xs)
+\end{lstlisting}
+~\\     
+
+\textbf{Excercise 3} \\% Nummerierung anpassen
+a) 
+\begin{lstlisting}
+neq :: Eq a => a -> [a] -> [a]
+neq x xs = x : filter (/=x) xs
+
+removeDuplicates :: Eq a => [a] -> [a]
+removeDuplicates xs = foldr neq xs xs
+\end{lstlisting}
+~\\     
+b)
+\begin{lstlisting}
+differentDigits :: Int -> Int
+differentDigits x = foldr (+) 0 (map (\x -> 1) (removeDuplicates (show x))) 
+\end{lstlisting}
+~\\     
+
+\textbf{Excercise 4} \\% Nummerierung anpassen
+a)
+\begin{lstlisting}
+data Polynomial a = Coeff a Int (Polynomial a)| Null deriving Show
+
+q :: Polynomial Int
+q = Coeff 4 3 (Coeff 2 1 (Coeff 5 0 Null))
+
+foldPoly :: (a -> Int -> b -> b) -> b -> Polynomial a -> b
+foldPoly f d Null = d
+foldPoly f d (Coeff a b c) = f a b (foldPoly f d c)
+\end{lstlisting}
+~\\    
+b)
+\begin{lstlisting}
+degree :: Polynomial Int -> Int
+degree x = foldPoly (\ c n m -> if n > m then n else m) minBound x 
+\end{lstlisting}
+~\\    
+
+
+\end{document}
