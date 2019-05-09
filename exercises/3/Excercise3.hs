@@ -1,5 +1,3 @@
-module Excercise3 where
-    
 import Data.Char
 
 data LibraryInput = Exit | Error String | Book (String, String) | Author String | Title String
@@ -57,30 +55,29 @@ getInput = do
 getLibraryAction :: [(String,String)] -> LibraryInput -> IO()
 getLibraryAction books Exit         = do return ()
 getLibraryAction books (Error e)    = do putStrLn (show (Error e))
-                                      >> library books
+                                         library books
 getLibraryAction books (Book (t,a)) = do putStrLn (show (Book (t,a))) 
-                                      >> putStrLn "Do you want to (p)ut the book back or do you want to (t)ake the book?"
-                                      -- TODO Error 
-                                      >> evaluateAction getLine books (t,a)
+                                         putStrLn "Do you want to (p)ut the book back or do you want to (t)ake the book?"
+                                         input <- getLine
+                                         evaluateAction input books (t,a)
 getLibraryAction books (Author a)   = do putStrLn (show (Author a))
-                                      >> putStrLn ("You have the following books from " ++ a)
-                                      >> displayBooks_A a books
-                                      >> library books
+                                         putStrLn ("You have the following books from " ++ a)
+                                         displayBooks_A a books
+                                         library books
 getLibraryAction books (Title t)    = do putStrLn (show (Title t))
-                                      >> putStrLn ("You have the following books with the title: " ++ t)
-                                      >> displayBooks_T t books
-                                      >> library books
+                                         putStrLn ("You have the following books with the title: " ++ t)
+                                         displayBooks_T t books
+                                         library books
  
                                      
 displayBooks_A :: String -> [(String,String)] -> IO()
 displayBooks_A a [] = return()
-displayBooks_A a ((title, author) :books) = if (a==author) then putStrLn (show (Book (title,author)))  else return ()
-                                            >> displayBooks_A a books
+displayBooks_A a ((title, author) :books) = if (a==author) then putStrLn (show (Book (title,author))) >> displayBooks_A a books else displayBooks_A a books
                                             
 displayBooks_T :: String -> [(String,String)] -> IO()
 displayBooks_T t [] = return()
-displayBooks_T t ((title, author) :books) = if (t==title) then putStrLn (show (Book (title,author)))  else return ()
-                                            >> displayBooks_T t books
+displayBooks_T t ((title, author) :books) = if (t==title) then putStrLn (show (Book (title,author))) >> displayBooks_T t books else displayBooks_T t books
+                                            
                                             
 evaluateAction :: String -> [(String,String)] -> (String,String) -> IO()
 evaluateAction "t" books b =  if (elem b books) then putStrLn "Done!" >> library (filter (/=b) books) else putStrLn "You do not have this book!" >> library books

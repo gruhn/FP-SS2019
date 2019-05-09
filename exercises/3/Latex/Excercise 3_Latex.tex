@@ -75,7 +75,7 @@ collatz x = iterate (\y -> if mod y 2 == 0 then div y 2 else 3*y+1) x
     
 total_stopping_time :: Int -> Int
 total_stopping_time 1 = 3
-total_stopping_time x = length (takeWhile (\y -> y /= 1) (collatz x))
+total_stopping_time x = length (takeWhile (/= 1) (collatz x))
 \end{lstlisting}
 ~\\
 b)
@@ -104,12 +104,84 @@ goldbach n = [(x,y)| mod n 2 == 0, x<-takeWhile (<n) primes, y<-filter (>=x) (ta
 b)
 \begin{lstlisting}
 range :: [a] -> Int -> Int -> [a]
-range xs a b = [xs !! i| i <- [a .. b]] 
+range xs m n = [ x | (i, x) <- zip [0 ..] xs, i >= m, i <= n b]
 \end{lstlisting}
 ~\\
 
 \textbf{Excercise 3} \\% Nummerierung anpassen
-~\\     
+a)
+\begin{lstlisting}
+main :: IO ()
+main = do
+  -- task a)
+  putStrLn "Welcome to your library"
+  library []
+  putStrLn "Bye!"
+  return ()
+\end{lstlisting}
+~\\
+b)
+\begin{lstlisting}
+getInput :: IO LibraryInput
+getInput = do
+  -- task b)
+  putStrLn "Would you like to put back or take a book?\n Enter Book: Title's name; Author's name \nAre you looking for an author?\n Enter Author: Author's name \nAre you looking for a special book?\n Enter Title: Title's name."
+  putChar '>'
+  input <- getLine
+  return (parseLibraryInput input)
+  return Exit
+\end{lstlisting}
+~\\    
+c) 
+\begin{lstlisting}
+library ::[(String,String)] -> IO ()
+library books =  do
+  -- task c)
+  input <- getInput
+  getLibraryAction books input
+  return ()
+  \end{lstlisting}
+  
+ \begin{lstlisting}
+getLibraryAction :: [(String,String)] -> LibraryInput -> IO()
+getLibraryAction books Exit = do return ()
+getLibraryAction books (Error e) = do putStrLn (show (Error e))
+								library books
+getLibraryAction books (Book (t,a)) = do putStrLn (show (Book (t,a))) 
+								putStrLn "Do you want to (p)ut the book back or do you want to (t)ake the book?"
+								input <- getLine
+								evaluateAction input books (t,a)
+getLibraryAction books (Author a)  = do putStrLn (show (Author a))
+								putStrLn ("You have the following books from " ++ a)
+								displayBooks_A a books
+								library books
+getLibraryAction books (Title t) = do putStrLn (show (Title t))
+								putStrLn ("You have the following books with the title: " ++ t)
+								displayBooks_T t books
+								library books
+\end{lstlisting}
+\begin{lstlisting}                                  
+displayBooks_A :: String -> [(String,String)] -> IO()
+displayBooks_A a [] = return()
+displayBooks_A a ((title, author) :books) = if (a==author) then putStrLn (show (Book (title,author))) >> displayBooks_A a books else displayBooks_A a books
+                                            
+displayBooks_T :: String -> [(String,String)] -> IO()
+displayBooks_T t [] = return()
+displayBooks_T t ((title, author) :books) = if (t==title) then putStrLn (show (Book (title,author))) >> displayBooks_T t books else displayBooks_T t books
+\end{lstlisting}
+~\\
+\begin{lstlisting}                     
+evaluateAction :: String -> [(String,String)] -> (String,String) -> IO()
+evaluateAction "t" books b  =  if (elem b books) then putStrLn "Done!" >> library (filter (/=b) books) else putStrLn "You do not have this book!" >> library books
+evaluateAction "p" books b  =  putStrLn "Done!" >> library (b:books)
+evaluateAction _   books _  =  putStrLn "Wrong input!" >> library books
+\end{lstlisting}
+
+~\\
+d)\\
+No, it is not possible to write a function \texttt{main :: Int} that behaves similar to the function \texttt{main :: IO ()} of the previous excercises. The number of books in the library is a value, which is encapsulated in an IO action. This value cannot be taken out of this action, since that would be against referential transparency. Furthermore, having the function \texttt{main} be of type \texttt{Int} would also consequently change the behaviour of the function as IO actions such as \texttt{putStrLn :: String -> IO ()} or let alone \texttt{>> :: IO () -> IO () -> IO()} would cause a type matching error.
+~\\
+~\\
 \textbf{Excercise 4} \\% Nummerierung anpassen
 a)
 \begin{center}
@@ -117,8 +189,8 @@ a)
 
     \node []  							(A)    {((-1,False),0) = $y_1$};
     \node [below=1cm of A]  				(B)    {((-1,$\bot$),0)};
-    \node [left=2.5cm of B]  			       	(C)    {(($\bot$,False),0)};
-    \node [right=2.5cm of B]  				(D)    {((-1,False),$\bot$)};
+    \node [left=2.5cm of B]  			       	(C)    {((-1,False),$\bot$)};
+    \node [right=2.5cm of B]  				(D)    {(($\bot$,False),0)};
     \node [below=1cm of B]  				(E)    {(($\bot$,False),$\bot$)};
     \node [left=2.5cm of E]  				(F)    {((-1,$\bot$),$\bot$)};
     \node [right=2.5cm of E]  				(G)    {(($\bot$,$\bot$),0)};
@@ -169,7 +241,7 @@ b) \\
 Given a domain $D= \underbrace{\mathbb{Z}_{\bot} \times ... \times \mathbb{Z}_{\bot}}_{n\text{\ times}}$ for $0<n \in \mathbb{N}$ and a chain $S \subseteq D$ then $\sup \{\vert S \vert \text{ } \vert  \text{ }  S \subseteq D, \text{S is a chain}\} = n+1$.\\ \\
 We use induction on n to show that this holds for all $n \in \mathbb{N}, n>0$.\\
 
-\textbf{Base case}. $n = 1$\\
+\textbf{Base case} $n = 1$\\
 Let $D=\mathbb{Z}_{\bot}$, then $\bot \in D$ and for all $x \in \mathbb{Z}: x \in \mathbb{Z}_{\bot}$. For $x,y \in S$ with $x,y \in \mathbb{Z}$ it follows from the definition of S that either $ x \sqsubseteq y$ or $y \sqsubseteq x$. By the definition of $\sqsubseteq$ and x and y, this is only true iff $x=y$. As a result,  $\vert \{x \in \mathbb{Z} \text{ } \vert  \text{ }  x \in  S\text{ with }S \subseteq D, \text{S is a chain}\} \vert \leq 1$.\\
 However, $\bot \sqsubseteq x$ for all $x \in \mathbb{Z}$ hence $\sup \{\vert S \vert \text{ } \vert  \text{ }  S \subseteq D, \text{S is a chain}\} = 1+1 = 2 = n+1$.\\ \\
 

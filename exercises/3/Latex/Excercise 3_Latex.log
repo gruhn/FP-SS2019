@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.13)  7 MAY 2019 15:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.13)  9 MAY 2019 11:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"Excercise 2_Latex.tex"
-(./Excercise 2_Latex.tex
+**"Excercise 3_Latex.tex"
+(./Excercise 3_Latex.tex
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/book.cls
@@ -605,8 +605,8 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen173
 \Gm@dimlist=\toks33
 )
-(./Excercise 2_Latex.aux)
-\openout1 = `"Excercise 2_Latex.aux"'.
+(./Excercise 3_Latex.aux)
+\openout1 = `"Excercise 3_Latex.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
 LaTeX Font Info:    ... okay on input line 56.
@@ -750,11 +750,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 109--110
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 111--115
-
- []
-
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 116.
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -764,7 +761,17 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-Overfull \hbox (10.06049pt too wide) in paragraph at lines 145--147
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 180--187
+
+ []
+
+
+Overfull \hbox (10.06049pt too wide) in paragraph at lines 217--219
 \OT1/cmr/m/n/12 ((\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OMS/
 cmsy/m/n/12 ?\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0)\OML/cmm/m/i
 t/12 ; \OT1/cmr/m/n/12 ((\OMS/cmsy/m/n/12 ?\OML/cmm/m/it/12 ; False\OT1/cmr/m/n
@@ -780,34 +787,34 @@ T1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 ?\OT1/cmr/m/n/12 )\OML/cmm/m
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--147
+Underfull \hbox (badness 10000) in paragraph at lines 217--219
 
  []
 
-[2]
+[3]
 Missing character: There is no   in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--171
+Underfull \hbox (badness 10000) in paragraph at lines 240--243
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--171
+Underfull \hbox (badness 10000) in paragraph at lines 240--243
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--175
+Underfull \hbox (badness 10000) in paragraph at lines 244--247
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--175
+Underfull \hbox (badness 10000) in paragraph at lines 244--247
 
  []
 
 
-Overfull \hbox (4.4712pt too wide) in paragraph at lines 176--178
+Overfull \hbox (4.4712pt too wide) in paragraph at lines 248--250
 []\OMS/cmsy/m/n/12 fj\OML/cmm/m/it/12 S\OMS/cmsy/m/n/12 j[]j[]\OML/cmm/m/it/12 
 S \OMS/cmsy/m/n/12 ^^R \OML/cmm/m/it/12 D; []\OMS/cmsy/m/n/12 g \OT1/cmr/m/n/12
  = \OML/cmm/m/it/12 n \OT1/cmr/m/n/12 + 1$ holds for $\OML/cmm/m/it/12 n \OMS/c
@@ -816,7 +823,7 @@ msy/m/n/12 2 \U/msb/m/n/12 N\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0 \OML/cmm/m/it/
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--178
+Underfull \hbox (badness 10000) in paragraph at lines 248--250
 
  []
 
@@ -827,29 +834,29 @@ Missing character: There is no   in font cmr12!
 Missing character: There is no   in font cmr12!
 Missing character: There is no   in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--190
+Underfull \hbox (badness 10000) in paragraph at lines 251--262
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--190
+Underfull \hbox (badness 10000) in paragraph at lines 251--262
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--190
+Underfull \hbox (badness 10000) in paragraph at lines 251--262
 
  []
 
-[3] (./Excercise 2_Latex.aux) ) 
+[4] (./Excercise 3_Latex.aux) ) 
 Here is how much of TeX's memory you used:
- 17932 strings out of 492995
- 361350 string characters out of 6132704
- 570966 words of memory out of 5000000
- 21132 multiletter control sequences out of 15000+600000
- 11636 words of font info for 46 fonts, out of 8000000 for 9000
+ 17961 strings out of 492995
+ 361701 string characters out of 6132704
+ 666966 words of memory out of 5000000
+ 21158 multiletter control sequences out of 15000+600000
+ 12422 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,11n,67p,707b,1659s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,12n,67p,707b,1659s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dv
 ips/base/8r.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/
@@ -863,13 +870,15 @@ pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></
 usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
 sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
-/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><
-/usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.p
-fb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on "Excercise 2_Latex.pdf" (3 pages, 151013 bytes).
+/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/
+local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></
+usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pf
+b></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/
+local/texlive/2017/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
+Output written on "Excercise 3_Latex.pdf" (4 pages, 170018 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
+ 89 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
