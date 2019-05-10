@@ -5,7 +5,7 @@ data LibraryInput = Exit | Error String | Book (String, String) | Author String 
 instance Show LibraryInput where
   show Exit = "Exit"
   show (Error xs) = "Invalid Input: " ++ xs
-  show (Book (title, author)) = "Book: " ++ title ++ ";" ++ author
+  show (Book (title, author)) = "Book: " ++ title ++ "; " ++ author
   show (Author author) = "Author: " ++ author
   show (Title title) = "Title: " ++ title
 
@@ -55,46 +55,56 @@ getInput = do
   -- end replace
 
 
-  
+
 -- auxiliary functions:
 
 handleLibraryInput :: [(String, String)] -> LibraryInput -> IO ()
 handleLibraryInput books (Title title) = do
   putStrLn ("You have the following books with the title: " ++ title)
-  -- TODO special message for empty results?
-  -- TODO print result list in a pretty way
-  putStr (unlines (filter sameTitle books)))
+  putStr (showBooksWhich matchTitle books)
   library books
   where
-    sameTitle (title', _) = title' == title
+    matchTitle (title', _) = title' == title
 handleLibraryInput books (Author author) = do
   putStrLn ("You have the following books from " ++ author)
-  -- TODO special message for empty results?
-  -- TODO print result list in a pretty way
-  putStr (unlines (filter sameAuthor books))
+  putStr (showBooksWhich matchAuthor books)
   library books
   where
-    sameAuthor (_, author') = author' == author
+    matchAuthor (_, author') = author' == author
+handleLibraryInput books (Book book) = do
+  putStrLn "Do you want to (p)ut the book back or do you want to (t)ake the book?"
+  cmd <- getLine
+  newBooks <- handleBookCommand cmd
+  library newBooks
+  where
+    handleBookCommand :: String -> IO [(String, String)]
+    handleBookCommand "p" = putBook book books
+    handleBookCommand "t" = takeBook book books
+    handleBookCommand _ = do
+      putStrLn "Wrong Input!"
+      return books
 handleLibraryInput books (Error xs) = do
   putStrLn ("There has been an error: " ++ xs)
   library books
 handleLibraryInput books Exit = do
   return ()
-handleLibraryInput books (Book book) = do
-  putStrLn "Do you want to (p)ut the book back or do you want to (t)ake the book?"
-  cmd <- getLine
-  newBooks <- applyCommand cmd
-  library newBooks
-  where
-    applyCommand :: String -> IO ([Book])
-    applyCommand cmd
-      | cmd == "p" = do
-        putStrLn "Done!"
-        return (book : books)
-      | cmd == "t" = do
-        -- TODO error message, if not included
-        putStrLn "Done!"
-        return (filter (/=book) books)
-      | otherwise = do
-        putStrLn "Wrong Input!"
-        return books
+
+showBooksWhich :: ((String,String) -> Bool) -> [(String,String)] -> String
+showBooksWhich predicate
+  = unlines
+  . map (show . Book)
+  . filter predicate
+
+takeBook :: (String,String) -> [(String,String)] -> IO [(String,String)]
+takeBook book books
+  | elem book books = do
+    putStrLn "Done!"
+    return (filter (/=book) books)
+  | otherwise = do
+    putStrLn "You do not have this book!"
+    return books
+
+putBook :: (String,String) -> [(String,String)] -> IO [(String,String)]
+putBook book books = do
+  putStrLn "Done!"
+  return (book : books)
