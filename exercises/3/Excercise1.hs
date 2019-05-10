@@ -13,5 +13,5 @@ total_stopping_time x = length (takeWhile (/= 1) (collatz x))
 -- b)
 
 check_collatz :: Int -> Bool
-check_collatz 1 = False
-check_collatz n = elem 1 (take n (collatz n))
+check_collatz 1 = True
+check_collatz n = (total_stopping_time n) <maxBound && check_collatz (n-1)
