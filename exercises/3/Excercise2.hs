@@ -12,9 +12,9 @@ primes :: [Int]
 primes = dropall [2 ..]
 
 goldbach :: Int -> [(Int,Int)]
-goldbach n = [(x,y)| mod n 2 == 0, x<-takeWhile (<n) primes, y<-filter (>=x) (takeWhile (<n) primes), x+y == n]
+goldbach n = [(x,y)| not (odd n), x<-takeWhile (<n) primes, y<-filter (>=x) (takeWhile (<n) primes), odd x, odd y, x+y == n]
 
 -- b) 
--- !! not allowed
+
 range :: [a] -> Int -> Int -> [a]
 range xs a b = [xs !! i| i <- [a .. b]] 
