@@ -70,7 +70,7 @@ Maximilian Loose (402372)
 a)
 \begin{lstlisting}
 collatz :: Int -> [Int] 
-collatz x = iterate (\y -> if mod y 2 == 0 then div y 2 else 3*y+1) x 
+collatz x = iterate (\y -> if even y then div y 2 else (3*y+1)) x
     
     
 total_stopping_time :: Int -> Int
@@ -82,7 +82,7 @@ b)
 \begin{lstlisting}
 check_collatz :: Int -> Bool
 check_collatz 1 = True
-check_collatz n = (total_stopping_time n) <maxBound && check_collatz (n-1)
+check_collatz n = (total_stopping_time n)<maxBound && check_collatz (n-1)
 \end{lstlisting}
 ~\\
 \textbf{Excercise 2} \\% Nummerierung anpassen
@@ -98,7 +98,7 @@ primes :: [Int]
 primes = dropall [2 ..]
 
 goldbach :: Int -> [(Int,Int)]
-goldbach n = [(x,y)| not(odd n), x<-takeWhile (<n) primes, y<-filter (>=x) (takeWhile (<n) primes), odd x, odd y, x+y == n]
+goldbach n = [(x,y)| even n, x<-takeWhile (<n) primes, y<-filter (>=x) (takeWhile (<n) primes), odd x, odd y, x+y == n]
 \end{lstlisting}
 ~\\
 b)
@@ -129,7 +129,6 @@ getInput = do
   putChar '>'
   input <- getLine
   return (parseLibraryInput input)
-  return Exit
 \end{lstlisting}
 ~\\    
 c) 
@@ -139,7 +138,6 @@ library books =  do
   -- task c)
   input <- getInput
   getLibraryAction books input
-  return ()
   \end{lstlisting}
   
  \begin{lstlisting}

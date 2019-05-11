@@ -39,7 +39,6 @@ library books =  do
   -- task c)
   input <- getInput
   getLibraryAction books input
-  return ()
       
 
 getInput :: IO LibraryInput
@@ -49,7 +48,6 @@ getInput = do
   putChar '>'
   input <- getLine
   return (parseLibraryInput input)
-  return Exit
   
 --auxiliary functions 
 getLibraryAction :: [(String,String)] -> LibraryInput -> IO()

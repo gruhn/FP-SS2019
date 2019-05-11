@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.13)  10 MAY 2019 16:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.13)  11 MAY 2019 11:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -761,17 +761,17 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 180--187
+Underfull \hbox (badness 10000) in paragraph at lines 178--185
 
  []
 
 
-Overfull \hbox (10.06049pt too wide) in paragraph at lines 217--219
+Overfull \hbox (10.06049pt too wide) in paragraph at lines 215--217
 \OT1/cmr/m/n/12 ((\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OMS/
 cmsy/m/n/12 ?\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0)\OML/cmm/m/i
 t/12 ; \OT1/cmr/m/n/12 ((\OMS/cmsy/m/n/12 ?\OML/cmm/m/it/12 ; False\OT1/cmr/m/n
@@ -787,34 +787,34 @@ T1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 ?\OT1/cmr/m/n/12 )\OML/cmm/m
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 217--219
+Underfull \hbox (badness 10000) in paragraph at lines 215--217
 
  []
 
-[3] [4]
+[3]
 Missing character: There is no   in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 240--243
+Underfull \hbox (badness 10000) in paragraph at lines 238--241
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 240--243
+Underfull \hbox (badness 10000) in paragraph at lines 238--241
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 244--247
+Underfull \hbox (badness 10000) in paragraph at lines 242--245
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 244--247
+Underfull \hbox (badness 10000) in paragraph at lines 242--245
 
  []
 
 
-Overfull \hbox (4.4712pt too wide) in paragraph at lines 248--250
+Overfull \hbox (4.4712pt too wide) in paragraph at lines 246--248
 []\OMS/cmsy/m/n/12 fj\OML/cmm/m/it/12 S\OMS/cmsy/m/n/12 j[]j[]\OML/cmm/m/it/12 
 S \OMS/cmsy/m/n/12 ^^R \OML/cmm/m/it/12 D; []\OMS/cmsy/m/n/12 g \OT1/cmr/m/n/12
  = \OML/cmm/m/it/12 n \OT1/cmr/m/n/12 + 1$ holds for $\OML/cmm/m/it/12 n \OMS/c
@@ -823,7 +823,7 @@ msy/m/n/12 2 \U/msb/m/n/12 N\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0 \OML/cmm/m/it/
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 248--250
+Underfull \hbox (badness 10000) in paragraph at lines 246--248
 
  []
 
@@ -834,25 +834,25 @@ Missing character: There is no   in font cmr12!
 Missing character: There is no   in font cmr12!
 Missing character: There is no   in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 251--262
+Underfull \hbox (badness 10000) in paragraph at lines 249--260
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 251--262
+Underfull \hbox (badness 10000) in paragraph at lines 249--260
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 251--262
+Underfull \hbox (badness 10000) in paragraph at lines 249--260
 
  []
 
-[5] (./Excercise 3_Latex.aux) ) 
+[4] (./Excercise 3_Latex.aux) ) 
 Here is how much of TeX's memory you used:
  17961 strings out of 492995
  361701 string characters out of 6132704
- 659966 words of memory out of 5000000
+ 667966 words of memory out of 5000000
  21158 multiletter control sequences out of 15000+600000
  12422 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -875,10 +875,10 @@ local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></
 usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pf
 b></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/
 local/texlive/2017/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on "Excercise 3_Latex.pdf" (5 pages, 171344 bytes).
+Output written on "Excercise 3_Latex.pdf" (4 pages, 170444 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
+ 89 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -12,7 +12,7 @@ primes :: [Int]
 primes = dropall [2 ..]
 
 goldbach :: Int -> [(Int,Int)]
-goldbach n = [(x,y)| not (odd n), x<-takeWhile (<n) primes, y<-filter (>=x) (takeWhile (<n) primes), odd x, odd y, x+y == n]
+goldbach n = [(x,y)| even n, x<-takeWhile (<n) primes, y<-filter (>=x) (takeWhile (<n) primes), odd x, odd y, x+y == n]
 
 -- b) 
 
