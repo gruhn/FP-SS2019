@@ -11,11 +11,6 @@ total_stopping_time n =
   1 + length (takeWhile (/=1) (collatz n))
 
 -- 1b)
-
--- QUESTION:
--- So... the function should basically always return True,
--- unless the collatz conjecture does not hold for a certain input.
--- In which case the function should not terminate?
 check_collatz :: Int -> Bool
 check_collatz n
   = all (<maxBound)

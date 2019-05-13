@@ -5,14 +5,14 @@ data LibraryInput = Exit | Error String | Book (String, String) | Author String 
 instance Show LibraryInput where
   show Exit = "Exit"
   show (Error xs) = "Invalid Input: " ++ xs
-  show (Book (title, author)) = "Book: " ++ title ++ "; " ++ author
+  show (Book (title, author)) = "Book: " ++ title ++ ";" ++ author
   show (Author author) = "Author: " ++ author
   show (Title title) = "Title: " ++ title
 
 trim :: String -> String
 trim = f . f
    where f = reverse . dropWhile isSpace
-
+  
 parseLibraryInput :: String -> LibraryInput
 parseLibraryInput input   | lhs == "Book" = Book ((trim (drop 1 title)), (trim (drop 1 author)))
                           | lhs == "Author" = Author (trim (drop 1 rhs))
@@ -22,89 +22,63 @@ parseLibraryInput input   | lhs == "Book" = Book ((trim (drop 1 title)), (trim (
                             where
                               (lhs, rhs) = span (/= ':') (trim input)
                               (title, author) = span (/= ';') (trim rhs)
-
+ 
+                            
 
 -- exercise:
 main :: IO ()
 main = do
   -- task a)
-  -- replace with implementation:
-  putStrLn "Welcome to your Library"
+  putStrLn "Welcome to your library"
   library []
   putStrLn "Bye!"
-  -- end replace
+  return ()
 
-library :: [(String,String)] -> IO ()
+library ::[(String,String)] -> IO ()
 library books =  do
   -- task c)
-  -- replace with implementation:
-  putStrLn ""
-  libInput <- getInput
-  handleLibraryInput books libInput
-  -- end replace
+  input <- getInput
+  getLibraryAction books input
+      
 
 getInput :: IO LibraryInput
 getInput = do
   -- task b)
   putStrLn "Would you like to put back or take a book?\n Enter Book: Title's name; Author's name \nAre you looking for an author?\n Enter Author: Author's name \nAre you looking for a special book?\n Enter Title: Title's name."
-  -- task b)
-  -- replace with implementation:
-  putStrLn ">"
+  putChar '>'
   input <- getLine
   return (parseLibraryInput input)
-  -- end replace
+  
+--auxiliary functions 
+getLibraryAction :: [(String,String)] -> LibraryInput -> IO()
+getLibraryAction books Exit         = do return ()
+getLibraryAction books (Error e)    = do putStrLn (show (Error e))
+                                         library books
+getLibraryAction books (Book (t,a)) = do putStrLn (show (Book (t,a))) 
+                                         putStrLn "Do you want to (p)ut the book back or do you want to (t)ake the book?"
+                                         input <- getLine
+                                         evaluateAction input books (t,a)
+getLibraryAction books (Author a)   = do putStrLn (show (Author a))
+                                         putStrLn ("You have the following books from " ++ a)
+                                         displayBooks_A a books
+                                         library books
+getLibraryAction books (Title t)    = do putStrLn (show (Title t))
+                                         putStrLn ("You have the following books with the title: " ++ t)
+                                         displayBooks_T t books
+                                         library books
+ 
+                                     
+displayBooks_A :: String -> [(String,String)] -> IO()
+displayBooks_A a [] = return()
+displayBooks_A a ((title, author) :books) = if (a==author) then putStrLn (show (Book (title,author))) >> displayBooks_A a books else displayBooks_A a books
+                                            
+displayBooks_T :: String -> [(String,String)] -> IO()
+displayBooks_T t [] = return()
+displayBooks_T t ((title, author) :books) = if (t==title) then putStrLn (show (Book (title,author))) >> displayBooks_T t books else displayBooks_T t books
+                                            
+                                            
+evaluateAction :: String -> [(String,String)] -> (String,String) -> IO()
+evaluateAction "t" books b =  if (elem b books) then putStrLn "Done!" >> library (filter (/=b) books) else putStrLn "You do not have this book!" >> library books
+evaluateAction "p" books b =  putStrLn "Done!" >> library (b:books)
+evaluateAction _   books _ =  putStrLn "Wrong input!" >> library books
 
-
-
--- auxiliary functions:
-
-handleLibraryInput :: [(String, String)] -> LibraryInput -> IO ()
-handleLibraryInput books (Title title) = do
-  putStrLn ("You have the following books with the title: " ++ title)
-  putStr (showBooksWhich matchTitle books)
-  library books
-  where
-    matchTitle (title', _) = title' == title
-handleLibraryInput books (Author author) = do
-  putStrLn ("You have the following books from " ++ author)
-  putStr (showBooksWhich matchAuthor books)
-  library books
-  where
-    matchAuthor (_, author') = author' == author
-handleLibraryInput books (Book book) = do
-  putStrLn "Do you want to (p)ut the book back or do you want to (t)ake the book?"
-  cmd <- getLine
-  newBooks <- handleBookCommand cmd
-  library newBooks
-  where
-    handleBookCommand :: String -> IO [(String, String)]
-    handleBookCommand "p" = putBook book books
-    handleBookCommand "t" = takeBook book books
-    handleBookCommand _ = do
-      putStrLn "Wrong Input!"
-      return books
-handleLibraryInput books (Error xs) = do
-  putStrLn ("There has been an error: " ++ xs)
-  library books
-handleLibraryInput books Exit = do
-  return ()
-
-showBooksWhich :: ((String,String) -> Bool) -> [(String,String)] -> String
-showBooksWhich predicate
-  = unlines
-  . map (show . Book)
-  . filter predicate
-
-takeBook :: (String,String) -> [(String,String)] -> IO [(String,String)]
-takeBook book books
-  | elem book books = do
-    putStrLn "Done!"
-    return (filter (/=book) books)
-  | otherwise = do
-    putStrLn "You do not have this book!"
-    return books
-
-putBook :: (String,String) -> [(String,String)] -> IO [(String,String)]
-putBook book books = do
-  putStrLn "Done!"
-  return (book : books)
