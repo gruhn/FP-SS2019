@@ -1,0 +1,261 @@
+\documentclass[a4paper,12pt,oneside]{book}
+
+\usepackage[ngerman]{babel}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
+\DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
+\usepackage{listings}
+\newcommand{\ignore}[1]{}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usetikzlibrary{positioning}
+\tikzstyle{data}=[draw,text centered]
+\usetikzlibrary{arrows,positioning, calc}
+\tikzstyle{vertex}=[draw,circle,minimum size=18pt,inner sep=0pt]
+
+\fboxrule0.3mm
+\definecolor{rahmen}{gray}{.3}      % Dunkelgrauer Rahmen
+\definecolor{grund}{gray}{.85}         % Hellgrauer Hintergrund
+
+\lstset{ 
+    language=Haskell, % choose the language of the code
+    basicstyle=\fontfamily{pcr}\selectfont\footnotesize\color{black},
+    keywordstyle=\color{black}\mdseries, % style for keywords
+    numbers=none, % where to put the line-numbers
+    numberstyle=\tiny, % the size of the fonts that are used for the line-numbers     
+    backgroundcolor=\color{grund},
+    showspaces=false, % show spaces adding particular underscores
+    showstringspaces=false, % underline spaces within strings
+    showtabs=false, % show tabs within strings adding particular underscores
+    frame=single, % adds a frame around the code
+    tabsize=2, % sets default tabsize to 2 spaces
+    rulesepcolor=\color{rahmen},
+    rulecolor=\color{rahmen},
+    captionpos=b, % sets the caption-position to bottom
+    breaklines=true, % sets automatic line breaking
+    breakatwhitespace=false, 
+}
+ 
+\pagestyle{fancy}
+\usepackage[left=30mm,right=30mm, top=27mm, bottom=22mm]{geometry}
+
+\fancyhf{}
+\rfoot{ \textbf{Page \thepage}}
+\lhead{\begin{footnotesize}Functional Programming SS 2019\end{footnotesize}}
+\rhead{\begin{footnotesize}379455, 402403, 389343, 402372\end{footnotesize}}
+\lfoot{\begin{footnotesize} 
+\end{footnotesize}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1 pt} 
+
+\begin{document}
+\setlength{\parindent}{0em} 
+
+
+\begin{center} 
+\textbf{\huge{Functional Programming} \\ \large{ Excercise Sheet 3}} % Nummerierung anpassen
+
+~\\
+Emilie Hastrup-Kiil (379455), 
+Julian Schacht (402403), \\
+Niklas Gruhn (389343), 
+Maximilian Loose (402372)
+\end{center}
+\textbf{Excercise 1} \\ % Nummerierung anpassen
+a)
+\begin{lstlisting}
+collatz :: Int -> [Int]
+collatz n = tail (iterate f n)
+  where
+    f n | even n = n `div` 2
+        | odd  n = 3*n + 1
+
+total_stopping_time :: Int -> Int
+total_stopping_time n = 1 + length (takeWhile (/=1) (collatz n))
+\end{lstlisting}
+~\\
+b)
+\begin{lstlisting}
+check_collatz :: Int -> Bool
+check_collatz n = all (<maxBound) . map total_stopping_time $ [1 .. n]
+\end{lstlisting}
+~\\
+\textbf{Excercise 2} \\% Nummerierung anpassen
+a)
+\begin{lstlisting}
+drop_mult :: Int -> [Int] -> [Int]
+drop_mult x xs = [y | y <- xs , mod y x /= 0]
+
+dropall :: [Int]-> [Int]
+dropall (x:xs) = x : dropall (drop_mult x xs)
+
+primes :: [Int]
+primes = dropall [2 ..]
+
+goldbach :: Int -> [(Int,Int)]
+goldbach x =
+  [(a, b) |  a <- (takeWhile (<x) primes), b <- (takeWhile (<x) primes), odd a, odd b, a <= div x 2,  b > div x 2, a+b == x ]
+\end{lstlisting}
+~\\
+b)
+\begin{lstlisting}
+range :: [a] -> Int -> Int -> [a]
+range xs m n = [ x | (i, x) <- zip [0 ..] xs, i >= m, i <= n]
+\end{lstlisting}
+~\\
+
+\textbf{Excercise 3} \\% Nummerierung anpassen
+a)
+\begin{lstlisting}
+main :: IO ()
+main = do
+  -- task a)
+  putStrLn "Welcome to your library"
+  library []
+  putStrLn "Bye!"
+  return ()
+\end{lstlisting}
+~\\
+b)
+\begin{lstlisting}
+getInput :: IO LibraryInput
+getInput = do
+  -- task b)
+  putStrLn "Would you like to put back or take a book?\n Enter Book: Title's name; Author's name \nAre you looking for an author?\n Enter Author: Author's name \nAre you looking for a special book?\n Enter Title: Title's name."
+  putChar '>'
+  input <- getLine
+  return (parseLibraryInput input)
+\end{lstlisting}
+~\\    
+c) 
+\begin{lstlisting}
+library ::[(String,String)] -> IO ()
+library books =  do
+  -- task c)
+  input <- getInput
+  getLibraryAction books input
+  \end{lstlisting}
+  
+ \begin{lstlisting}
+getLibraryAction :: [(String,String)] -> LibraryInput -> IO()
+getLibraryAction books Exit = do return ()
+getLibraryAction books (Error e) = do putStrLn (show (Error e))
+								library books
+getLibraryAction books (Book (t,a)) = do putStrLn (show (Book (t,a))) 
+								putStrLn "Do you want to (p)ut the book back or do you want to (t)ake the book?"
+								input <- getLine
+								evaluateAction input books (t,a)
+getLibraryAction books (Author a)  = do putStrLn (show (Author a))
+								putStrLn ("You have the following books from " ++ a)
+								displayBooks_A a books
+								library books
+getLibraryAction books (Title t) = do putStrLn (show (Title t))
+								putStrLn ("You have the following books with the title: " ++ t)
+								displayBooks_T t books
+								library books
+\end{lstlisting}
+\begin{lstlisting}                                  
+displayBooks_A :: String -> [(String,String)] -> IO()
+displayBooks_A a [] = return()
+displayBooks_A a ((title, author) :books) = if (a==author) then putStrLn (show (Book (title,author))) >> displayBooks_A a books else displayBooks_A a books
+                                            
+displayBooks_T :: String -> [(String,String)] -> IO()
+displayBooks_T t [] = return()
+displayBooks_T t ((title, author) :books) = if (t==title) then putStrLn (show (Book (title,author))) >> displayBooks_T t books else displayBooks_T t books
+\end{lstlisting}
+~\\
+\begin{lstlisting}                     
+evaluateAction :: String -> [(String,String)] -> (String,String) -> IO()
+evaluateAction "t" books b  =  if (elem b books) then putStrLn "Done!" >> library (filter (/=b) books) else putStrLn "You do not have this book!" >> library books
+evaluateAction "p" books b  =  putStrLn "Done!" >> library (b:books)
+evaluateAction _   books _  =  putStrLn "Wrong input!" >> library books
+\end{lstlisting}
+
+~\\
+d)\\
+No, it is not possible to write a function \texttt{main :: Int} that behaves similar to the function \texttt{main :: IO ()} of the previous excercises. The number of books in the library is a value, which is encapsulated in an IO action. This value cannot be taken out of this action, since that would be against referential transparency. Furthermore, having the function \texttt{main} be of type \texttt{Int} would also consequently change the behaviour of the function as IO actions such as \texttt{putStrLn :: String -> IO ()} or let alone \texttt{>> :: IO () -> IO () -> IO()} would cause a type matching error.
+~\\
+~\\
+\textbf{Excercise 4} \\% Nummerierung anpassen
+a)
+\begin{center}
+\begin{tikzpicture}[node distance=1cm and 1cm]
+
+    \node []  							(A)    {((-1,False),0) = $y_1$};
+    \node [below=1cm of A]  				(B)    {((-1,$\bot$),0)};
+    \node [left=2.5cm of B]  			       	(C)    {((-1,False),$\bot$)};
+    \node [right=2.5cm of B]  				(D)    {(($\bot$,False),0)};
+    \node [below=1cm of B]  				(E)    {(($\bot$,False),$\bot$)};
+    \node [left=2.5cm of E]  				(F)    {((-1,$\bot$),$\bot$)};
+    \node [right=2.5cm of E]  				(G)    {(($\bot$,$\bot$),0)};
+    \node [below=1cm of E]  				(H)    {(($\bot$,$\bot$),$\bot$)};
+    
+ \path[<-]
+    (A) edge node {} (B)
+    (A) edge node {} (C)
+    (A) edge node {} (D)
+    (B) edge node {} (F)
+    (B) edge node {} (G)
+    (C) edge node {} (E)
+    (C) edge node {} (F)
+    (D) edge node {} (E)
+    (D) edge node {} (G)
+    (E) edge node {} (H)
+    (F) edge node {} (H)
+    (G) edge node {} (H);
+
+    
+\end{tikzpicture}
+\end{center}
+
+All elements $x \in (( \mathbb{Z}_{\bot} \times \mathbb{B}_{\bot}) \times \mathbb{Z}_{\bot}$ that are less defined than $y_1$ are given by $((-1,\bot),0),((\bot,False),0),((-1,False),\bot),((\bot,False),\bot),((-1,\bot),\bot),((\bot,\bot),0)$ and the smallest Element $((\bot,\bot),\bot)$.
+\\
+
+\begin{center}
+\begin{tikzpicture}[node distance=1cm and 1cm]
+
+    
+    \node[] at (0, 4)  (A)  {((-1,$\bot$),2) = $y_2$};
+    \node[] at (3, 2)   (B) {(($\bot$,$\bot$),2)};
+    \node[] at (-3, 2) (C)  {((-1,$\bot$),$\bot$)};
+    \node[] at (0, 0)  (D)  {(($\bot$,$\bot$),$\bot$)};
+    
+ \path[<-]
+    (A) edge node {} (B)
+    (A) edge node {} (C)
+    (C) edge node {} (D)
+    (B) edge node {} (D);
+
+    
+\end{tikzpicture}
+\end{center}
+All elements $x \in (( \mathbb{Z}_{\bot} \times \mathbb{B}_{\bot}) \times \mathbb{Z}_{\bot}$ that are less defined than $y_2$ are given by $((\bot,\bot),2),((-1,\bot),\bot)$ and the smallest Element $((\bot,\bot),\bot)$.
+\newpage
+b) \\
+Given a domain $D= \underbrace{\mathbb{Z}_{\bot} \times ... \times \mathbb{Z}_{\bot}}_{n\text{\ times}}$ for $0<n \in \mathbb{N}$ and a chain $S \subseteq D$ then $\sup \{\vert S \vert \text{ } \vert  \text{ }  S \subseteq D, \text{S is a chain}\} = n+1$.\\ \\
+We use induction on n to show that this holds for all $n \in \mathbb{N}, n>0$.\\
+
+\textbf{Base case} $n = 1$\\
+Let $D=\mathbb{Z}_{\bot}$, then $\bot \in D$ and for all $x \in \mathbb{Z}: x \in \mathbb{Z}_{\bot}$. For $x,y \in S$ with $x,y \in \mathbb{Z}$ it follows from the definition of S that either $ x \sqsubseteq y$ or $y \sqsubseteq x$. By the definition of $\sqsubseteq$ and x and y, this is only true iff $x=y$. As a result,  $\vert \{x \in \mathbb{Z} \text{ } \vert  \text{ }  x \in  S\text{ with }S \subseteq D, \text{S is a chain}\} \vert \leq 1$.\\
+However, $\bot \sqsubseteq x$ for all $x \in \mathbb{Z}$ hence $\sup \{\vert S \vert \text{ } \vert  \text{ }  S \subseteq D, \text{S is a chain}\} = 1+1 = 2 = n+1$.\\ \\
+
+\textbf{Induction hypothesis} \\
+$\sup \{\vert S \vert \text{ } \vert  \text{ }  S \subseteq D, \text{S is a chain}\} = n+1$ holds for $n \in \mathbb{N}, 0<n$ with $D= \underbrace{\mathbb{Z}_{\bot} \times ... \times \mathbb{Z}_{\bot}}_{n\text{\ times}}$.\\
+
+\textbf{Induction step} $ n\rightarrow n+1$\\
+Let $D=\underbrace{\mathbb{Z}_{\bot} \times ... \times \mathbb{Z}_{\bot}}_{n+1\text{\ times}}$. \\
+It follows from the hypothesis that if $D_n=\underbrace{\mathbb{Z}_{\bot} \times ... \times \mathbb{Z}_{\bot}}_{n\text{\ times}}$ then $\sup \{\vert S_n \vert \text{ } \vert  \text{ }  S_n \subseteq D_n, S_n\text{ is a chain}\} = n+1$. \\ 
+\\ Now we extend each n-tuple $ (n_1,n_2, ...,n_n)$ in the chain $S_n$ ($n_1, n_2,...,n_n \in \mathbb{Z}_{\bot}$) so that we get (n+1)-tuples $(n_1,n_2, ...,n_n, x) \in D, x \in \mathbb{Z}_{\bot}$.\\
+\\
+Case 1: $x\in\mathbb{Z}$\\
+For two tuples $t_i = (n_{i_1},n_{i_2}, ...,n_{i_n}), t_j = (n_{j_1},n_{j_2}, ...,n_{j_n}) \in S_n$ either $t_i \sqsubseteq t_j$ or  $t_j \sqsubseteq t_i$ applies. Then also $(n_{i_1},n_{i_2}, ...,n_{i_n},x) \sqsubseteq (n_{j_1},n_{j_2}, ...,n_{j_n},x)$ or  $(n_{j_1},n_{j_2}, ...,n_{j_n},x) \sqsubseteq (n_{i_1},n_{i_2}, ...,n_{i_n},x)$ since in particular $x\sqsubseteq x$ and consequently $(n_{j_1},n_{j_2}, ...,n_{j_n},x)$, $(n_{i_1},n_{i_2}, ...,n_{i_n},x) \in S$ with $\sup \{\vert S \vert \text{ } \vert  \text{ }  S \subseteq D, \text{S is a chain}\} \geq \sup \{\vert S_n \vert \text{ } \vert  \text{ }  S_n \subseteq D_n, S_n\text{ is a chain}\} = n+1$. \\
+If $(n_1,n_2, ...,n_n, x) \in S$ and $(n_1,n_2, ...,n_n, y) \in S$ then $x=y$ because neither $x \sqsubseteq y$ nor $y \sqsubseteq x$ applies. Similarily, If $t_i= (n_1,n_2, ...,n_n, x) \in S$ and $t_j =(n_1,n_2,...,x,...,n_n) \in S$ then neither $t_i \sqsubseteq t_j$ nor $t_j \sqsubseteq t_i$ applies, because $t_i \neq t_j$ and both are equally defined. This leads on to our second case.\\\\
+Case 2: $(n_1,n_2, ...,n_n, x), n_1 = n_2 =... =n_n=x=\bot$\\
+Then clearly $(n_1,n_2, ...,n_n, x) \in S$ since it is the smallest element of D and therefore $(n_1,n_2, ...,n_n, x) \sqsubseteq y$ for all $y\in D$. Resulting from this, $\sup \{\vert S \vert \text{ } \vert  \text{ }  S \subseteq D, \text{S is a chain}\} = (n+1)+1 = n+2$. The equation holds.
+\hfill $\square$
+\end{document}
