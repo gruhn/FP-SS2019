@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.13)  11 MAY 2019 11:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.13)  13 MAY 2019 12:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -738,20 +738,20 @@ File: omlpcr.fd
 )
 LaTeX Font Info:    Font shape `OML/pcr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 72.
-LaTeX Font Info:    Try loading font information for OMS+pcr on input line 73.
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 75.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omspcr.fd
 File: omspcr.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 73.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 75.
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
+Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
 
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 116.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 117.
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -761,17 +761,17 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 170--171
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 178--185
+Underfull \hbox (badness 10000) in paragraph at lines 179--186
 
  []
 
 
-Overfull \hbox (10.06049pt too wide) in paragraph at lines 215--217
+Overfull \hbox (10.06049pt too wide) in paragraph at lines 216--218
 \OT1/cmr/m/n/12 ((\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 ; \OMS/
 cmsy/m/n/12 ?\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0)\OML/cmm/m/i
 t/12 ; \OT1/cmr/m/n/12 ((\OMS/cmsy/m/n/12 ?\OML/cmm/m/it/12 ; False\OT1/cmr/m/n
@@ -787,34 +787,34 @@ T1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 ?\OT1/cmr/m/n/12 )\OML/cmm/m
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--217
+Underfull \hbox (badness 10000) in paragraph at lines 216--218
 
  []
 
 [3]
 Missing character: There is no   in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 238--241
+Underfull \hbox (badness 10000) in paragraph at lines 239--242
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 238--241
+Underfull \hbox (badness 10000) in paragraph at lines 239--242
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 242--245
+Underfull \hbox (badness 10000) in paragraph at lines 243--246
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 242--245
+Underfull \hbox (badness 10000) in paragraph at lines 243--246
 
  []
 
 
-Overfull \hbox (4.4712pt too wide) in paragraph at lines 246--248
+Overfull \hbox (4.4712pt too wide) in paragraph at lines 247--249
 []\OMS/cmsy/m/n/12 fj\OML/cmm/m/it/12 S\OMS/cmsy/m/n/12 j[]j[]\OML/cmm/m/it/12 
 S \OMS/cmsy/m/n/12 ^^R \OML/cmm/m/it/12 D; []\OMS/cmsy/m/n/12 g \OT1/cmr/m/n/12
  = \OML/cmm/m/it/12 n \OT1/cmr/m/n/12 + 1$ holds for $\OML/cmm/m/it/12 n \OMS/c
@@ -823,7 +823,7 @@ msy/m/n/12 2 \U/msb/m/n/12 N\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0 \OML/cmm/m/it/
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--248
+Underfull \hbox (badness 10000) in paragraph at lines 247--249
 
  []
 
@@ -834,26 +834,26 @@ Missing character: There is no   in font cmr12!
 Missing character: There is no   in font cmr12!
 Missing character: There is no   in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 249--260
+Underfull \hbox (badness 10000) in paragraph at lines 250--261
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 249--260
+Underfull \hbox (badness 10000) in paragraph at lines 250--261
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 249--260
+Underfull \hbox (badness 10000) in paragraph at lines 250--261
 
  []
 
 [4] (./Excercise 3_Latex.aux) ) 
 Here is how much of TeX's memory you used:
- 17961 strings out of 492995
- 361701 string characters out of 6132704
+ 17963 strings out of 492995
+ 361713 string characters out of 6132704
  667966 words of memory out of 5000000
- 21158 multiletter control sequences out of 15000+600000
+ 21160 multiletter control sequences out of 15000+600000
  12422 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,67p,707b,1659s stack positions out of 5000i,500n,10000p,200000b,80000s

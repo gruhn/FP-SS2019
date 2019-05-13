@@ -1,20 +1,23 @@
+import Data.Char
+
 --Excercise 1
 
 -- a)
 
-collatz :: Int -> [Int] 
-collatz x = iterate (\y -> if even y then div y 2 else (3*y+1)) x
-    
-    
+collatz :: Int -> [Int]
+collatz n = tail (iterate f n)
+  where
+    f n | even n = n `div` 2
+        | odd  n = 3*n + 1
+
 total_stopping_time :: Int -> Int
-total_stopping_time 1 = 3
-total_stopping_time x = length (takeWhile (/= 1) (collatz x))
+total_stopping_time n = 1 + length (takeWhile (/=1) (collatz n))
+
 
 -- b)
 
 check_collatz :: Int -> Bool
-check_collatz 1 = True
-check_collatz n = (total_stopping_time n)<maxBound && check_collatz (n-1)
+check_collatz n = all (<maxBound) . map total_stopping_time $ [1 .. n]
 
 
 --Excercise 2
@@ -31,17 +34,23 @@ primes :: [Int]
 primes = dropall [2 ..]
 
 goldbach :: Int -> [(Int,Int)]
-goldbach n = [(x,y)| even n, x<-takeWhile (<n) primes, y<-filter (>=x) (takeWhile (<n) primes), odd x, odd y, x+y == n]
+goldbach x =
+  [(a, b) | 
+    a <- (takeWhile (<x) primes),
+    b <- (takeWhile (<x) primes),
+    odd a,
+    odd b,
+    a <= div x 2,
+    b > div x 2,
+    a+b == x
+  ]
 
 -- b) 
---not allowed
 range :: [a] -> Int -> Int -> [a]
-range xs a b = [xs !! i| i <- [a .. b]]
+range xs m n = [ x | (i, x) <- zip [0 ..] xs, i >= m, i <= n]
 
 
 --Excercise 3 
-
-import Data.Char
 
 data LibraryInput = Exit | Error String | Book (String, String) | Author String | Title String
 
