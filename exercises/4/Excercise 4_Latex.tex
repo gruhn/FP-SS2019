@@ -1,0 +1,98 @@
+\documentclass[a4paper,12pt,oneside]{book}
+
+\usepackage[ngerman]{babel}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
+\DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
+\usepackage{listings}
+\newcommand{\ignore}[1]{}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usetikzlibrary{positioning}
+\tikzstyle{data}=[draw,text centered]
+\usetikzlibrary{arrows,positioning, calc}
+\tikzstyle{vertex}=[draw,circle,minimum size=18pt,inner sep=0pt]
+
+\fboxrule0.3mm
+\definecolor{rahmen}{gray}{.3}      % Dunkelgrauer Rahmen
+\definecolor{grund}{gray}{.85}         % Hellgrauer Hintergrund
+
+\lstset{ 
+    language=Haskell, % choose the language of the code
+    basicstyle=\fontfamily{pcr}\selectfont\footnotesize\color{black},
+    keywordstyle=\color{black}\mdseries, % style for keywords
+    numbers=none, % where to put the line-numbers
+    numberstyle=\tiny, % the size of the fonts that are used for the line-numbers     
+    backgroundcolor=\color{grund},
+    showspaces=false, % show spaces adding particular underscores
+    showstringspaces=false, % underline spaces within strings
+    showtabs=false, % show tabs within strings adding particular underscores
+    frame=single, % adds a frame around the code
+    tabsize=2, % sets default tabsize to 2 spaces
+    rulesepcolor=\color{rahmen},
+    rulecolor=\color{rahmen},
+    captionpos=b, % sets the caption-position to bottom
+    breaklines=true, % sets automatic line breaking
+    breakatwhitespace=false, 
+}
+ 
+\pagestyle{fancy}
+\usepackage[left=30mm,right=30mm, top=27mm, bottom=22mm]{geometry}
+
+\fancyhf{}
+\rfoot{ \textbf{Page \thepage}}
+\lhead{\begin{footnotesize}Functional Programming SS 2019\end{footnotesize}}
+\rhead{\begin{footnotesize}379455, 402403, 389343, 402372\end{footnotesize}}
+\lfoot{\begin{footnotesize} 
+\end{footnotesize}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1 pt} 
+
+\begin{document}
+\setlength{\parindent}{0em} 
+
+
+\begin{center} 
+\textbf{\huge{Functional Programming} \\ \large{ Excercise Sheet 4}} % Nummerierung anpassen
+
+~\\
+Emilie Hastrup-Kiil (379455), 
+Julian Schacht (402403), \\
+Niklas Gruhn (389343), 
+Maximilian Loose (402372)
+\end{center}
+\textbf{Excercise 1} \\ % Nummerierung anpassen
+a) 
+$f_{plus} : \mathbb{Z}_{\bot} \times \mathbb{Z}_{\bot} \rightarrow \mathbb{Z}_{\bot}, f_{plus}(x,y) = \begin{cases} 
+y & x=0\\ 
+x & y=0 \\ 
+x+ y &x,y\in \mathbb{Z}\\
+\bot & otherwise
+\end{cases}$
+~\\ \\
+b) We will show that $f_{Plus}$ is strict, i.e. if $x_i=\bot$ for $1\leq i\leq2$ then $f_{Plus}(x_1,x_2) = \bot$.\\ \\
+Proof:\\
+case 1: $x_1 = 0$ and $x_2=\bot$. It follow: $f_{Plus}(x_1,x_2) = x_2 = \bot$ since $x_1= 0 $\\
+case 1: $x_1 \neq 0$ and $x_2=\bot$. It follow: $f_{Plus}(x_1,x_2) = \bot$ since $x_2 \notin \mathbb{Z}$ and $x_1 \neq 0 $\\
+case 1: $x_2 = 0$ and $x_1=\bot$. It follow: $f_{Plus}(x_1,x_2) = x_1 = \bot$ since $x_2= 0 $\\
+case 1: $x_2 \neq 0$ and $x_1=\bot$. It follow: $f_{Plus}(x_1,x_2) =  \bot$ since $x_1 \notin \mathbb{Z} $ and $x_2 \neq 0 $ \\
+~\\
+c) We will show that $f_{Plus}$ is monotonic, i.e. if  $d \sqsubseteq_{\mathbb{Z}_{\bot} \times \mathbb{Z}_{\bot}} d'$ then $f_{Plus}(d) \sqsubseteq_{\mathbb{Z}_{\bot}} f_{Plus}(d')$.\\ \\
+Proof:\\
+Let $d \sqsubseteq_{\mathbb{Z}_{\bot} \times \mathbb{Z}_{\bot}} d'$ with $d,d' \in \mathbb{Z}_{\bot} \times \mathbb{Z}_{\bot}$. Then either $d=d'$ or d is less defined than d'. \\If $d=d'$ then $f_{Plus}(d)={Plus}(d')$, thus $f_{Plus}(d) \sqsubseteq {Plus}(d')$.\\
+Otherwise $d\neq d'$. Let's say $d=(d_1,d_2)$ and $d'=(d_1',d_2')$ with $ (d_1,d_2) \sqsubseteq (d_1',d_2')$. Then there exists an index $1 \leq i \leq 2$ with $d_i \neq \bot, d_i' \in \mathbb{Z}$ as well as $j\neq i$ with $d_j = d_j'$. Since $f_{Plus}$ is strict $f_{Plus}(d)= \bot$ because $d_i = \bot$ for $1 \leq i \leq 2$.\\ \\ 
+Case 1: $d_j = d_j' = \bot$ then we know from the strictness of $f_{Plus}$ that $f(d') = \bot$.  $f_{Plus}(d) = \bot \sqsubseteq_{\mathbb{Z}_{\bot}} \bot = f_{Plus}(d')$ holds.\\ \\
+Case 2: $d_j = d_j' \neq \bot$ with $d_j,d_j' \in \mathbb{Z}$ then $d' \in \mathbb{Z}_{\bot} \times \mathbb{Z}_{\bot}$ and $f(d') = a\in \mathbb{Z}$. a is more defined than $\bot$, thus $f_{Plus}(d) = \bot \sqsubseteq_{\mathbb{Z}_{\bot}}a= f_{Plus}(d'), a\in \mathbb{Z}$ holds. \\
+~\\
+\textbf{Excercise 2} \\% Nummerierung anpassen
+~\\
+\textbf{Excercise 3} \\% Nummerierung anpassen
+~\\     
+\textbf{Excercise 4} \\% Nummerierung anpassen
+
+\end{document}
