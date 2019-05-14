@@ -89,9 +89,32 @@ Otherwise $d\neq d'$. Let's say $d=(d_1,d_2)$ and $d'=(d_1',d_2')$ with $ (d_1,d
 Case 1: $d_j = d_j' = \bot$ then we know from the strictness of $f_{Plus}$ that $f(d') = \bot$.  $f_{Plus}(d) = \bot \sqsubseteq_{\mathbb{Z}_{\bot}} \bot = f_{Plus}(d')$ holds.\\ \\
 Case 2: $d_j = d_j' \neq \bot$ with $d_j,d_j' \in \mathbb{Z}$ then $d' \in \mathbb{Z}_{\bot} \times \mathbb{Z}_{\bot}$ and $f(d') = a\in \mathbb{Z}$. a is more defined than $\bot$, thus $f_{Plus}(d) = \bot \sqsubseteq_{\mathbb{Z}_{\bot}}a= f_{Plus}(d'), a\in \mathbb{Z}$ holds. \\
 ~\\
-\textbf{Excercise 2} \\% Nummerierung anpassen
+\textbf{Excercise 2} \\ \\% Nummerierung anpassen
+a) \\ $-': \mathbb{Z}_{\bot} \rightarrow \mathbb{Z}_{\bot}, -'(x) = \begin{cases} 
+-x & x\in \mathbb{Z}\\ 
+\bot & otherwise
+\end{cases}$ \\
+b)\\ $*':\mathbb{N}_{\bot} \times \mathbb{N}_{\bot} \rightarrow \mathbb{N}_{\bot} , *'(x,y) = \begin{cases} 
+x*y & x,y \in \mathbb{N}\\ 
+\bot & otherwise
+\end{cases}$ \\ \\
+$max:\mathbb{N}_{\bot} \times \mathbb{N}_{\bot} \rightarrow \mathbb{N}_{\bot} , max'(x,y) = \begin{cases} 
+x & x > y\\ 
+y & y \geq x\\ 
+\bot & otherwise
+\end{cases}$ \\
+This is not monotonic is it?
+$max:\mathbb{N}_{\bot} \times \mathbb{N}_{\bot} \rightarrow \mathbb{N}_{\bot} , max'(x,y) = \begin{cases} 
+x & x > y\\ 
+y & otherwise\\ 
+\end{cases}$
+
+
 ~\\
-\textbf{Excercise 3} \\% Nummerierung anpassen
+\textbf{Excercise 3} \\ \\% Nummerierung anpassen
+a) To show: If $\sqsubseteq_{D_1 \rightarrow D_2}$ is complete on $D_1 \rightarrow D_2$ then $\bot_{D_2}$ exists. \\ \\
+Proof:\\
+Let $\sqsubseteq_{D_1 \rightarrow D_2}$ is complete on $D_1 \rightarrow D_2$, then $D_1 \rightarrow D_2$ has a smallest element  with respect to $\sqsubseteq_{D_1 \rightarrow D_2}$. This element is denoted $\bot_{D_1 \rightarrow D_2}$. Furthermore, for every chain S of $D_1 \rightarrow D_2$ there exists a least upper bound $\sqcup S \in D_1 \rightarrow D_2$.
 ~\\     
 \textbf{Excercise 4} \\% Nummerierung anpassen
 

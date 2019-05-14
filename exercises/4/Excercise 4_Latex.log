@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.13)  14 MAY 2019 17:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.13)  14 MAY 2019 22:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -729,53 +729,50 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 Missing character: There is no   in font cmr12!
 Missing character: There is no   in font cmr12!
 Missing character: There is no   in font cmr12!
+Missing character: There is no   in font cmr12!
+Missing character: There is no   in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--97
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 69--97
+Underfull \hbox (badness 10000) in paragraph at lines 69--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--97
+Underfull \hbox (badness 10000) in paragraph at lines 69--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--97
+Underfull \hbox (badness 10000) in paragraph at lines 69--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--97
+Underfull \hbox (badness 10000) in paragraph at lines 69--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--97
+Underfull \hbox (badness 10000) in paragraph at lines 69--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--97
+Underfull \hbox (badness 10000) in paragraph at lines 69--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--97
+Underfull \hbox (badness 10000) in paragraph at lines 69--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--97
+Underfull \hbox (badness 10000) in paragraph at lines 69--111
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 69--97
+Underfull \hbox (badness 10000) in paragraph at lines 69--111
 
  []
 
@@ -788,31 +785,48 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-(./Excercise 4_Latex.aux) ) 
+Missing character: There is no   in font cmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--120
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--120
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--120
+
+ []
+
+[2] (./Excercise 4_Latex.aux) ) 
 Here is how much of TeX's memory you used:
  17240 strings out of 492995
  352053 string characters out of 6132704
- 446966 words of memory out of 5000000
+ 448966 words of memory out of 5000000
  20454 multiletter control sequences out of 15000+600000
  9206 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,11n,67p,423b,266s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2017/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbo
-ls/msbm10.pfb>
-Output written on "Excercise 4_Latex.pdf" (1 page, 106620 bytes).
+</usr/local/texlive/2017/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symb
+ols/msbm10.pfb>
+Output written on "Excercise 4_Latex.pdf" (2 pages, 118604 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
+ 62 PDF objects out of 1000 (max. 8388607)
+ 45 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
