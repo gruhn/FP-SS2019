@@ -22,12 +22,12 @@
 \definecolor{rahmen}{gray}{.3}      % Dunkelgrauer Rahmen
 \definecolor{grund}{gray}{.85}         % Hellgrauer Hintergrund
 
-\lstset{ 
+\lstset{
     language=Haskell, % choose the language of the code
     basicstyle=\fontfamily{pcr}\selectfont\footnotesize\color{black},
     keywordstyle=\color{black}\mdseries, % style for keywords
     numbers=none, % where to put the line-numbers
-    numberstyle=\tiny, % the size of the fonts that are used for the line-numbers     
+    numberstyle=\tiny, % the size of the fonts that are used for the line-numbers
     backgroundcolor=\color{grund},
     showspaces=false, % show spaces adding particular underscores
     showstringspaces=false, % underline spaces within strings
@@ -38,9 +38,9 @@
     rulecolor=\color{rahmen},
     captionpos=b, % sets the caption-position to bottom
     breaklines=true, % sets automatic line breaking
-    breakatwhitespace=false, 
+    breakatwhitespace=false,
 }
- 
+
 \pagestyle{fancy}
 \usepackage[left=30mm,right=30mm, top=27mm, bottom=22mm]{geometry}
 
@@ -48,35 +48,35 @@
 \rfoot{ \textbf{Page \thepage}}
 \lhead{\begin{footnotesize}Functional Programming SS 2019\end{footnotesize}}
 \rhead{\begin{footnotesize}379455, 402403, 389343, 402372\end{footnotesize}}
-\lfoot{\begin{footnotesize} 
+\lfoot{\begin{footnotesize}
 \end{footnotesize}}
 \renewcommand{\headrulewidth}{1pt}
-\renewcommand{\footrulewidth}{1 pt} 
+\renewcommand{\footrulewidth}{1 pt}
 
 \begin{document}
-\setlength{\parindent}{0em} 
+\setlength{\parindent}{0em}
 
 
-\begin{center} 
+\begin{center}
 \textbf{\huge{Functional Programming} \\ \large{ Excercise Sheet 3}} % Nummerierung anpassen
 
 ~\\
-Emilie Hastrup-Kiil (379455), 
+Emilie Hastrup-Kiil (379455),
 Julian Schacht (402403), \\
-Niklas Gruhn (389343), 
+Niklas Gruhn (389343),
 Maximilian Loose (402372)
 \end{center}
 \textbf{Excercise 1} \\ % Nummerierung anpassen
 a)
 \begin{lstlisting}
 collatz :: Int -> [Int]
-collatz n = tail (iterate f n)
+collatz n = iterate f n
   where
     f n | even n = n `div` 2
         | odd  n = 3*n + 1
 
 total_stopping_time :: Int -> Int
-total_stopping_time n = 1 + length (takeWhile (/=1) (collatz n))
+total_stopping_time n = length (takeWhile (/=1) (collatz n))
 \end{lstlisting}
 ~\\
 b)
@@ -131,8 +131,8 @@ getInput = do
   input <- getLine
   return (parseLibraryInput input)
 \end{lstlisting}
-~\\    
-c) 
+~\\
+c)
 \begin{lstlisting}
 library ::[(String,String)] -> IO ()
 library books =  do
@@ -140,13 +140,13 @@ library books =  do
   input <- getInput
   getLibraryAction books input
   \end{lstlisting}
-  
+
  \begin{lstlisting}
 getLibraryAction :: [(String,String)] -> LibraryInput -> IO()
 getLibraryAction books Exit = do return ()
 getLibraryAction books (Error e) = do putStrLn (show (Error e))
 								library books
-getLibraryAction books (Book (t,a)) = do putStrLn (show (Book (t,a))) 
+getLibraryAction books (Book (t,a)) = do putStrLn (show (Book (t,a)))
 								putStrLn "Do you want to (p)ut the book back or do you want to (t)ake the book?"
 								input <- getLine
 								evaluateAction input books (t,a)
@@ -159,17 +159,17 @@ getLibraryAction books (Title t) = do putStrLn (show (Title t))
 								displayBooks_T t books
 								library books
 \end{lstlisting}
-\begin{lstlisting}                                  
+\begin{lstlisting}
 displayBooks_A :: String -> [(String,String)] -> IO()
 displayBooks_A a [] = return()
 displayBooks_A a ((title, author) :books) = if (a==author) then putStrLn (show (Book (title,author))) >> displayBooks_A a books else displayBooks_A a books
-                                            
+
 displayBooks_T :: String -> [(String,String)] -> IO()
 displayBooks_T t [] = return()
 displayBooks_T t ((title, author) :books) = if (t==title) then putStrLn (show (Book (title,author))) >> displayBooks_T t books else displayBooks_T t books
 \end{lstlisting}
 ~\\
-\begin{lstlisting}                     
+\begin{lstlisting}
 evaluateAction :: String -> [(String,String)] -> (String,String) -> IO()
 evaluateAction "t" books b  =  if (elem b books) then putStrLn "Done!" >> library (filter (/=b) books) else putStrLn "You do not have this book!" >> library books
 evaluateAction "p" books b  =  putStrLn "Done!" >> library (b:books)
@@ -194,7 +194,7 @@ a)
     \node [left=2.5cm of E]  				(F)    {((-1,$\bot$),$\bot$)};
     \node [right=2.5cm of E]  				(G)    {(($\bot$,$\bot$),0)};
     \node [below=1cm of E]  				(H)    {(($\bot$,$\bot$),$\bot$)};
-    
+
  \path[<-]
     (A) edge node {} (B)
     (A) edge node {} (C)
@@ -209,7 +209,7 @@ a)
     (F) edge node {} (H)
     (G) edge node {} (H);
 
-    
+
 \end{tikzpicture}
 \end{center}
 
@@ -219,24 +219,24 @@ All elements $x \in (( \mathbb{Z}_{\bot} \times \mathbb{B}_{\bot}) \times \mathb
 \begin{center}
 \begin{tikzpicture}[node distance=1cm and 1cm]
 
-    
+
     \node[] at (0, 4)  (A)  {((-1,$\bot$),2) = $y_2$};
     \node[] at (3, 2)   (B) {(($\bot$,$\bot$),2)};
     \node[] at (-3, 2) (C)  {((-1,$\bot$),$\bot$)};
     \node[] at (0, 0)  (D)  {(($\bot$,$\bot$),$\bot$)};
-    
+
  \path[<-]
     (A) edge node {} (B)
     (A) edge node {} (C)
     (C) edge node {} (D)
     (B) edge node {} (D);
 
-    
+
 \end{tikzpicture}
 \end{center}
 All elements $x \in (( \mathbb{Z}_{\bot} \times \mathbb{B}_{\bot}) \times \mathbb{Z}_{\bot}$ that are less defined than $y_2$ are given by $((\bot,\bot),2),((-1,\bot),\bot)$ and the smallest Element $((\bot,\bot),\bot)$.
 \newpage
-b) \\
+b)ï¿½\\
 Given a domain $D= \underbrace{\mathbb{Z}_{\bot} \times ... \times \mathbb{Z}_{\bot}}_{n\text{\ times}}$ for $0<n \in \mathbb{N}$ and a chain $S \subseteq D$ then $\sup \{\vert S \vert \text{ } \vert  \text{ }  S \subseteq D, \text{S is a chain}\} = n+1$.\\ \\
 We use induction on n to show that this holds for all $n \in \mathbb{N}, n>0$.\\
 
@@ -249,12 +249,12 @@ $\sup \{\vert S \vert \text{ } \vert  \text{ }  S \subseteq D, \text{S is a chai
 
 \textbf{Induction step} $ n\rightarrow n+1$\\
 Let $D=\underbrace{\mathbb{Z}_{\bot} \times ... \times \mathbb{Z}_{\bot}}_{n+1\text{\ times}}$. \\
-It follows from the hypothesis that if $D_n=\underbrace{\mathbb{Z}_{\bot} \times ... \times \mathbb{Z}_{\bot}}_{n\text{\ times}}$ then $\sup \{\vert S_n \vert \text{ } \vert  \text{ }  S_n \subseteq D_n, S_n\text{ is a chain}\} = n+1$. \\ 
-\\ Now we extend each n-tuple $ (n_1,n_2, ...,n_n)$ in the chain $S_n$ ($n_1, n_2,...,n_n \in \mathbb{Z}_{\bot}$) so that we get (n+1)-tuples $(n_1,n_2, ...,n_n, x) \in D, x \in \mathbb{Z}_{\bot}$.\\
+It follows from the hypothesis that if $D_n=\underbrace{\mathbb{Z}_{\bot} \times ... \times \mathbb{Z}_{\bot}}_{n\text{\ times}}$ then $\sup \{\vert S_n \vert \text{ } \vert  \text{ }  S_n \subseteq D_n, S_n\text{ is a chain}\} = n+1$. \\
+\\ Now we extend each n-tuple $ (n_1,n_2, ...,n_n)$ in the chain $S_n$ ($n_1, n_2,...,n_n \in \mathbb{Z}_{\bot}$) so that we get (n+1)-tuples $(n_1,n_2, ...,n_n, x)ï¿½\in D, xï¿½\in \mathbb{Z}_{\bot}$.\\
 \\
 Case 1: $x\in\mathbb{Z}$\\
 For two tuples $t_i = (n_{i_1},n_{i_2}, ...,n_{i_n}), t_j = (n_{j_1},n_{j_2}, ...,n_{j_n}) \in S_n$ either $t_i \sqsubseteq t_j$ or  $t_j \sqsubseteq t_i$ applies. Then also $(n_{i_1},n_{i_2}, ...,n_{i_n},x) \sqsubseteq (n_{j_1},n_{j_2}, ...,n_{j_n},x)$ or  $(n_{j_1},n_{j_2}, ...,n_{j_n},x) \sqsubseteq (n_{i_1},n_{i_2}, ...,n_{i_n},x)$ since in particular $x\sqsubseteq x$ and consequently $(n_{j_1},n_{j_2}, ...,n_{j_n},x)$, $(n_{i_1},n_{i_2}, ...,n_{i_n},x) \in S$ with $\sup \{\vert S \vert \text{ } \vert  \text{ }  S \subseteq D, \text{S is a chain}\} \geq \sup \{\vert S_n \vert \text{ } \vert  \text{ }  S_n \subseteq D_n, S_n\text{ is a chain}\} = n+1$. \\
-If $(n_1,n_2, ...,n_n, x) \in S$ and $(n_1,n_2, ...,n_n, y) \in S$ then $x=y$ because neither $x \sqsubseteq y$ nor $y \sqsubseteq x$ applies. Similarily, If $t_i= (n_1,n_2, ...,n_n, x) \in S$ and $t_j =(n_1,n_2,...,x,...,n_n) \in S$ then neither $t_i \sqsubseteq t_j$ nor $t_j \sqsubseteq t_i$ applies, because $t_i \neq t_j$ and both are equally defined. This leads on to our second case.\\\\
+If $(n_1,n_2, ...,n_n, x)ï¿½\in S$ and $(n_1,n_2, ...,n_n, y)ï¿½\in S$ then $x=y$ because neither $x \sqsubseteq y$ nor $y \sqsubseteq x$ applies. Similarily, If $t_i= (n_1,n_2, ...,n_n, x)ï¿½\in S$ and $t_j =(n_1,n_2,...,x,...,n_n)ï¿½\in S$ then neither $t_i \sqsubseteq t_j$ nor $t_j \sqsubseteq t_i$ applies, because $t_i \neq t_j$ and both are equally defined. This leads on to our second case.\\\\
 Case 2: $(n_1,n_2, ...,n_n, x), n_1 = n_2 =... =n_n=x=\bot$\\
 Then clearly $(n_1,n_2, ...,n_n, x) \in S$ since it is the smallest element of D and therefore $(n_1,n_2, ...,n_n, x) \sqsubseteq y$ for all $y\in D$. Resulting from this, $\sup \{\vert S \vert \text{ } \vert  \text{ }  S \subseteq D, \text{S is a chain}\} = (n+1)+1 = n+2$. The equation holds.
 \hfill $\square$
