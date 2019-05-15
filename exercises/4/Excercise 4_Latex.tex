@@ -122,8 +122,15 @@ With that we know that $\bot_{D_1 \rightarrow D_2}$ is a constant function.\\
 It follows from $\bot_{D_1 \rightarrow D_2}(d) = a \sqsubseteq f(d)$ (for every $d \in D_1$) that $ a \sqsubseteq x$ for every $x \in D_2$. Hence, $D_2$ must have a smallest element a with respect to $\sqsubseteq_{D_2}$ which we denote as $\bot_{D_2}$. \\ \\
 b) To show: If $\sqsubseteq_{D_1 \rightarrow D_2}$ is complete on $D_1 \rightarrow D_2$, then for all chains S on $D_2$ the least upper bound $\sqcup S$ of S exists in $D_2$. \\ \\
 Proof: \\
-Let $\sqsubseteq_{D_1 \rightarrow D_2}$ be complete on $D_1 \rightarrow D_2$, then for every chain S of $D_1 \rightarrow D_2$ there exists a least upper bound $\sqcup S \in D_1 \rightarrow D_2$. For functions $f,f' \in S $ either $f\sqsubseteq f'$ or $f'\sqsubseteq f$ holds, i.e. $f(d)\sqsubseteq f'(d)$ or $f'(d)\sqsubseteq f(d)$ holds for every $d\in D_1$. It follows that for every $d \in D_1$ $S_d = \{ f(d) \vert f \in S\}$ is a chain in $D_2$. \\From Lemma 2.1.11 b) follows that every chain $S_d$ has a least upper bound $\sqcup S_d$ since S has a least upper bound $\sqcup S$ ($\sqsubseteq_{D_1 \rightarrow D_2}$ is complete). Furthermore, $\sqcup S(d) = \sqcup S_d$.
+Let $\sqsubseteq_{D_1 \rightarrow D_2}$ be complete on $D_1 \rightarrow D_2$, then for every chain S of $D_1 \rightarrow D_2$ there exists a least upper bound $\sqcup S \in D_1 \rightarrow D_2$. For functions $f,f' \in S $ either $f\sqsubseteq f'$ or $f'\sqsubseteq f$ holds, i.e. $f(d)\sqsubseteq f'(d)$ or $f'(d)\sqsubseteq f(d)$ holds for every $d\in D_1$. It follows that for every $d \in D_1$ $S_d = \{ f(d) \vert f \in S\}$ is a chain in $D_2$. \\From Lemma 2.1.11 b) follows that every chain $S_d$ has a least upper bound $\sqcup S_d$ since S has a least upper bound $\sqcup S$ ($\sqsubseteq_{D_1 \rightarrow D_2}$ is complete). Furthermore, $\sqcup S(d) = \sqcup S_d \in D_2$. \\
 ~\\     
-\textbf{Excercise 4} \\% Nummerierung anpassen
-
+\textbf{Excercise 4} \\ \\% Nummerierung anpassen
+a) To show: Let $a,b \in \mathbb{R}$. The standard ordering $\leq$ on the real numbers is complete on the closed interval $[a,b]$, i.e. $[a,b]$ has a smallest element w.r.t. $\leq$ and for every chain $S  \subseteq [a,b]$ there exists a least upper bound $sup S \in [a,b]$. \\ \\
+Proof:\\
+The smallest element in $[a,b] = \{ r \vert a \leq r \leq b\}$ with respect to $\leq$ is a, since $a \leq x$ for every $x \in [a,b]$ (this follows from the definition of a closed interval).\\
+Since $[a,b]$ is bounded from above by b ($x \leq $ for every $x\in [a,b]$), every chain $S  \subseteq [a,b]$ S is bounded from above as well:\\
+Case 1. $S = [c,b] = \{ r \vert c \leq r \leq b\}$ with $ c\in [a,b]$. Then S is bounded from above by b. \\ 
+Case 2. $S = [c,d] = \{ r \vert c \leq r \leq d\}$ with $ c,d\in [a,b]$ and $c\leq d$. Then S is bounded from above by d.\\
+We know that $\mathbb{R}$ is complete, therefore all chains $S  \subseteq [a,b]$ have a least upper bound with $supS = d$ for $S = [c,d] \subseteq [a,b]$.\\
+Thus, the standard ordering $\leq$ on the real numbers is complete on the closed interval $[a,b]$.
 \end{document}

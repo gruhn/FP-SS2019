@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.13)  15 MAY 2019 10:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.4.13)  15 MAY 2019 11:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -798,58 +798,70 @@ Missing character: There is no   in font cmr12!
 Missing character: There is no   in font cmr12!
 Missing character: There is no   in font cmr12!
 Missing character: There is no   in font cmr12!
+Missing character: There is no   in font cmr12!
+Missing character: There is no   in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--128
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 114--128
+Underfull \hbox (badness 10000) in paragraph at lines 114--136
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--128
+Underfull \hbox (badness 10000) in paragraph at lines 114--136
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--128
+Underfull \hbox (badness 10000) in paragraph at lines 114--136
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--128
+Underfull \hbox (badness 10000) in paragraph at lines 114--136
 
  []
 
-[2] (./Excercise 4_Latex.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--136
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--136
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--136
+
+ []
+
+[2] [3] (./Excercise 4_Latex.aux) ) 
 Here is how much of TeX's memory you used:
  17394 strings out of 492995
  353923 string characters out of 6132704
- 449189 words of memory out of 5000000
+ 450189 words of memory out of 5000000
  20597 multiletter control sequences out of 15000+600000
  9818 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,11n,67p,702b,266s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2017/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symb
-ols/msbm10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/stmaryrd/
-stmary10.pfb>
-Output written on "Excercise 4_Latex.pdf" (2 pages, 124549 bytes).
+ 55i,11n,67p,713b,266s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2017/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/
+symbols/msbm10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/stmar
+yrd/stmary10.pfb>
+Output written on "Excercise 4_Latex.pdf" (3 pages, 127403 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 69 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
