@@ -6,6 +6,7 @@
 \usepackage{amsfonts}
 \usepackage{fancyhdr}
 \usepackage{fancyvrb}
+\usepackage{stmaryrd}
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
 \DefineVerbatimEnvironment{example}{Verbatim}{fontsize=\small}
 \usepackage{listings}
@@ -114,7 +115,14 @@ y & otherwise\\
 \textbf{Excercise 3} \\ \\% Nummerierung anpassen
 a) To show: If $\sqsubseteq_{D_1 \rightarrow D_2}$ is complete on $D_1 \rightarrow D_2$ then $\bot_{D_2}$ exists. \\ \\
 Proof:\\
-Let $\sqsubseteq_{D_1 \rightarrow D_2}$ is complete on $D_1 \rightarrow D_2$, then $D_1 \rightarrow D_2$ has a smallest element  with respect to $\sqsubseteq_{D_1 \rightarrow D_2}$. This element is denoted $\bot_{D_1 \rightarrow D_2}$. Furthermore, for every chain S of $D_1 \rightarrow D_2$ there exists a least upper bound $\sqcup S \in D_1 \rightarrow D_2$.
+Let $\sqsubseteq_{D_1 \rightarrow D_2}$ be complete on $D_1 \rightarrow D_2$, then $D_1 \rightarrow D_2$ has a smallest element with respect to $\sqsubseteq_{D_1 \rightarrow D_2}$. This element is denoted $\bot_{D_1 \rightarrow D_2}$.
+Since $\bot_{D_1 \rightarrow D_2}$ is the smallest element  $\bot_{D_1 \rightarrow D_2} \sqsubseteq f$ holds for every $f:D_1 \rightarrow D_2$ i.e. $\bot_{D_1 \rightarrow D_2}(d) \sqsubseteq f(d)$ holds for every $d \in D_1$. \\
+We say that $\bot_{D_1 \rightarrow D_2}(d) = a\in D_2$ and $\bot_{D_1 \rightarrow D_2}(d') = b\in D_2$. Then $a \sqsubseteq f(d)$ and $b \sqsubseteq f(d')$ with $d,d'\in D_1$. Now if $a \sqsubseteq b$ then a function g that maps every element of $D_1$ to a would exists with $g\sqsubseteq \bot_{D_1 \rightarrow D_2} \sqsubseteq f$ and $a \sqsubseteq f(d)$, $a \sqsubseteq b \sqsubseteq f(d')$ for every $f:D_1 \rightarrow D_2$. $\lightning$ $\bot_{D_1 \rightarrow D_2}$ is the smallest element! Therefore, $a\sqsubseteq b$ and similarily $b\sqsubseteq a$ only holds iff $a = b$. \\
+With that we know that $\bot_{D_1 \rightarrow D_2}$ is a constant function.\\
+It follows from $\bot_{D_1 \rightarrow D_2}(d) = a \sqsubseteq f(d)$ (for every $d \in D_1$) that $ a \sqsubseteq x$ for every $x \in D_2$. Hence, $D_2$ must have a smallest element a with respect to $\sqsubseteq_{D_2}$ which we denote as $\bot_{D_2}$. \\ \\
+b) To show: If $\sqsubseteq_{D_1 \rightarrow D_2}$ is complete on $D_1 \rightarrow D_2$, then for all chains S on $D_2$ the least upper bound $\sqcup S$ of S exists in $D_2$. \\ \\
+Proof: \\
+Let $\sqsubseteq_{D_1 \rightarrow D_2}$ be complete on $D_1 \rightarrow D_2$, then for every chain S of $D_1 \rightarrow D_2$ there exists a least upper bound $\sqcup S \in D_1 \rightarrow D_2$. For functions $f,f' \in S $ either $f\sqsubseteq f'$ or $f'\sqsubseteq f$ holds, i.e. $f(d)\sqsubseteq f'(d)$ or $f'(d)\sqsubseteq f(d)$ holds for every $d\in D_1$. It follows that for every $d \in D_1$ $S_d = \{ f(d) \vert f \in S\}$ is a chain in $D_2$. \\From Lemma 2.1.11 b) follows that every chain $S_d$ has a least upper bound $\sqcup S_d$ since S has a least upper bound $\sqcup S$ ($\sqsubseteq_{D_1 \rightarrow D_2}$ is complete). Furthermore, $\sqcup S(d) = \sqcup S_d$.
 ~\\     
 \textbf{Excercise 4} \\% Nummerierung anpassen
 
